@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Instrument+Serif:ital@0;1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 20% 98%;
+    --foreground: 200 15% 12%;
+
+    --card: 40 15% 96%;
+    --card-foreground: 200 15% 12%;
+
+    --popover: 40 20% 98%;
+    --popover-foreground: 200 15% 12%;
+
+    --primary: 175 42% 38%;
+    --primary-foreground: 40 20% 98%;
+
+    --secondary: 40 10% 92%;
+    --secondary-foreground: 200 15% 12%;
+
+    --muted: 40 8% 90%;
+    --muted-foreground: 200 8% 42%;
+
+    --accent: 175 35% 32%;
+    --accent-foreground: 40 20% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 10% 86%;
+    --input: 40 10% 86%;
+    --ring: 175 42% 38%;
+
+    --radius: 0.5rem;
+
+    --text-bright: 200 15% 10%;
+    --surface: 40 15% 96%;
+    --surface-elevated: 40 20% 98%;
+  }
+
+  .dark {
+    --background: 200 18% 7%;
+    --foreground: 40 10% 88%;
+
+    --card: 200 14% 10%;
+    --card-foreground: 40 10% 88%;
+
+    --popover: 200 14% 10%;
+    --popover-foreground: 40 10% 88%;
+
+    --primary: 175 48% 52%;
+    --primary-foreground: 200 18% 7%;
+
+    --secondary: 200 12% 14%;
+    --secondary-foreground: 40 10% 88%;
+
+    --muted: 200 10% 16%;
+    --muted-foreground: 200 6% 55%;
+
+    --accent: 175 40% 45%;
+    --accent-foreground: 200 18% 7%;
+
+    --border: 200 10% 18%;
+    --input: 200 10% 18%;
+    --ring: 175 48% 52%;
+
+    --text-bright: 40 10% 94%;
+    --surface: 200 14% 9%;
+    --surface-elevated: 200 12% 12%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    @apply font-sans;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-normal text-text-bright;
+    letter-spacing: -0.02em;
+  }
+}
+
+
+@layer utilities {
+  .accent-word,
+  .gradient-text {
+    color: hsl(var(--primary));
+    font-style: italic;
+  }
+
+  .glass-card {
+    background: hsl(var(--surface));
+    border: 1px solid hsl(var(--border));
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-md bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 sm:px-6 sm:py-3;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-border px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:border-foreground/30 hover:bg-secondary sm:px-6 sm:py-3;
+  }
+
+  .link-arrow {
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-all duration-300 hover:gap-2.5;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
